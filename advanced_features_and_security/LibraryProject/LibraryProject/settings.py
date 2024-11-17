@@ -78,6 +78,8 @@ SECURE_CONTENT_TYPE_NOSNIFF = True  # Ensures browsers follow the declared conte
 
 # XSS Protection
 SECURE_BROWSER_XSS_FILTER = True  # Enables browser's built-in XSS protection
+# Ensure your app correctly identifies requests as secure
+SECURE_PROXY_SSL_HEADER = ('HTTP_X_FORWARDED_PROTO', 'https')
 
 
 MIDDLEWARE = [
