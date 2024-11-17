@@ -60,6 +60,26 @@ CSP_DEFAULT_SRC = ["'self'"]
 CSP_SCRIPT_SRC = ["'self'"]
 CSP_STYLE_SRC = ["'self'"]
 
+# Redirect all HTTP requests to HTTPS
+SECURE_SSL_REDIRECT = True  # Ensures HTTP requests are redirected to HTTPS
+
+# HTTP Strict Transport Security (HSTS)
+SECURE_HSTS_SECONDS = 31536000  # Instructs browsers to only access the site via HTTPS for 1 year
+SECURE_HSTS_INCLUDE_SUBDOMAINS = True  # Applies HSTS to all subdomains
+SECURE_HSTS_PRELOAD = True  # Allows the site to be included in browsers' HSTS preload lists
+# Ensure cookies are sent only over secure HTTPS connections
+SESSION_COOKIE_SECURE = True  # Secures session cookies
+CSRF_COOKIE_SECURE = True  # Secures CSRF cookies
+# Clickjacking Protection
+X_FRAME_OPTIONS = "DENY"  # Prevents the site from being framed
+
+# Prevent MIME Sniffing
+SECURE_CONTENT_TYPE_NOSNIFF = True  # Ensures browsers follow the declared content type
+
+# XSS Protection
+SECURE_BROWSER_XSS_FILTER = True  # Enables browser's built-in XSS protection
+
+
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
