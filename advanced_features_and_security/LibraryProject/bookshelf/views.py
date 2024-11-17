@@ -44,3 +44,17 @@ def add_book(request):
     else:
         form = BookForm()
     return render(request, 'bookshelf/add_book.html', {'form': form})
+
+
+from django.shortcuts import render, redirect
+from .forms import ExampleForm  # Ensure ExampleForm is imported
+
+def form_example_view(request):
+    if request.method == 'POST':
+        form = ExampleForm(request.POST)
+        if form.is_valid():
+            # Handle valid form data here
+            return redirect('book_list')  # Redirect to a safe view
+    else:
+        form = ExampleForm()
+    return render(request, 'bookshelf/form_example.html', {'form': form})
