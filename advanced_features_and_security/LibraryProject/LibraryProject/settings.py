@@ -52,8 +52,13 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'bookshelf',
-    'relationship_app'
+    'relationship_app',
+    'csp'
 ]
+
+CSP_DEFAULT_SRC = ["'self'"]
+CSP_SCRIPT_SRC = ["'self'"]
+CSP_STYLE_SRC = ["'self'"]
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
