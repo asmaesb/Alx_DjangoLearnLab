@@ -1,16 +1,18 @@
-
 from django.contrib import admin
-from rest_framework.routers import DefaultRouter
-
-from api_project.api.views import BookList, BookViewSet
-
-router = DefaultRouter()
-router.register(r'books_all', BookViewSet, basename='book_all')
-from django.urls import include, path
+from django.urls import path, include
 
 urlpatterns = [
-    path('books/', BookList.as_view(), name='book-list'),
-    path('', include(router.urls)),
+    # Admin route
     path('admin/', admin.site.urls),
+    
+    # Include routes from the 'api' app
     path('api/', include('api.urls')),
+
+    # Token authentication route
+    path('api-token-auth/', include('rest_framework.authtoken')),
+]
+from rest_framework.authtoken.views import obtain_auth_token
+
+urlpatterns += [
+    path('api-token-auth/', obtain_auth_token, name='api_token_auth'),
 ]
